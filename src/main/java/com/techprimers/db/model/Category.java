@@ -6,15 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Position {
+public class Category {
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Integer id;
-    @Column(name = "lat")
-    private Double lat;
-    @Column(name = "lng")
-    private Double lng;
+    @Column(name = "name")
+    private String name;
 
     public Integer getId() {
         return id;
@@ -24,20 +22,13 @@ public class Position {
         this.id = id;
     }
 
-    public Double getLat() {
-        return lat;
+    public String getName() {
+        return name;
     }
 
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
-    public Double getLng() {
-        return lng;
-    }
-
-    public void setLng(Double lng) {
-        this.lng = lng;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
+
