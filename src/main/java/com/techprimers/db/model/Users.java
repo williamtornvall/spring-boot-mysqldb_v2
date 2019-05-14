@@ -12,15 +12,20 @@ public class Users {
     @GeneratedValue
     @Column(name = "id")
     private Integer id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "team_name")
     private String teamName;
+
     @Column(name = "salary")
     private Integer salary;
 
+
     public Users() {
     }
+
 
     public Integer getId() {
         return id;

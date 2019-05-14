@@ -1,18 +1,29 @@
 package com.techprimers.db.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+//@Table(schema = "Category")
 public class Category {
+
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Integer id;
+
+    //@NotNull
+    //@Size(min = 1, max = 64)
     @Column(name = "name")
     private String name;
+
+    @OneToMany
+    @JoinColumn(name = "category_id")
+    private List<Obstacle> obstacles = new ArrayList<>();
+
 
     public Integer getId() {
         return id;

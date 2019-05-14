@@ -1,24 +1,34 @@
 package com.techprimers.db.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
+//@Table(schema = "Obstacle")
 public class Obstacle {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue             // genererar värde i kronologisk ordning
     @Column(name = "id")
     private Integer id;
-    @Column(name = "position_id")
-    private Double positionId;
+
+    @Column(name = "lng")
+    private Double lng;
+
+    @Column(name = "lat")
+    private Double lat;
+
+    //@NotNull                               // förbjuder användaren att lämna fält tomt (null)
+    //@Size(min = 5, max = 256)              // sätter krav på att kommentar är minimum 5 tecken
     @Column(name = "comment")
     private String comment;
-    @Column(name = "category_id")
-    private Integer categoryId;
+
     @Column(name = "status")
     private Boolean status;
+
+    @ManyToOne
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -28,12 +38,20 @@ public class Obstacle {
         this.id = id;
     }
 
-    public Double getPositionId() {
-        return positionId;
+    public Double getLng () {
+        return lng;
     }
 
-    public void setPositionId(Double positionId) {
-        this.positionId = positionId;
+    public void setLng (Double lng){
+        this.lng = lng;
+    }
+
+    public Double getLat () {
+        return lat;
+    }
+
+    public void setLat (Double lat){
+        this.lat = lat;
     }
 
     public String getComment() {
@@ -42,14 +60,6 @@ public class Obstacle {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public Integer getCategoryId(){
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId){
-        this.categoryId = categoryId;
     }
 
     public Boolean getStatus(){
@@ -62,4 +72,3 @@ public class Obstacle {
 
 
 }
-
